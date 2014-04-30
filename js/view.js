@@ -25,6 +25,7 @@ var AppView = Backbone.View.extend({
   // DOMイベントとメソッドの関連付け
   events: {
     // 検索ボタンのクリックイベントに検索処理を関連付ける
+    // テキストの文字を入れるごとに検索処理を走らせる
     "click #search": "search",
     "keyup #user": "search",
     "keydown #user": "search",
