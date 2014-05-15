@@ -1,0 +1,45 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Probe - Javascript/PHP recon</title>
+<script type="text/javascript" src="js/md5.js"></script>
+<script type="text/javascript">
+var probeDetails = '';
+probe = {};
+probe.createIdent = function() {
+  var ident;
+  ident = '';
+  ident += screen.width;
+  ident += screen.height;
+  ident += screen.availWidth;
+  ident += screen.availHeight;
+  ident += screen.colorDepth;
+  ident += navigator.language;
+  ident += navigator.platform;
+  ident += navigator.userAgent;
+  ident += navigator.plugins.length;
+  ident += navigator.javaEnabled();
+    ident += '122';
+  ident = hex_md5(ident);
+  this.ident = ident.substr(0, this.identLength);
+
+}
+probe.setIdentLength = function(len) {
+  this.identLength = len;
+}
+probe.getIdent = function() {
+  return this.ident;
+}
+probe.setIdentLength(30);
+probe.createIdent();
+console.log('Your unique identifier is: ' + probe.getIdent());
+</script>
+</head>
+
+<body>
+<p>
+<a href="http://www.businessinfo.co.uk/" title="By Businessinfo"><img src="../../images/logo.gif" border="0"></a>
+</p></body>
+</html>

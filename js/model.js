@@ -20,14 +20,14 @@ var App = Backbone.Model.extend({
     // jQuery.ajaxを使い、指定したユーザのpublic gistのデータを取得
     var gistapiurl = "https://api.github.com/users/" +
       this.get("user") + "/gists?callback=?";
-
+console.log(gistapiurl);
       //一度Collectionを空にする
       this.gistList = new GistList();
     $.ajax({
       url: gistapiurl,
       type: "GET",
       context: this, // successコールバック関数内のthisを設定
-      dataType: "jsonp",
+      dataType: "json",
       success: function (response) {
         var data = response.data;
         if (data.message) {

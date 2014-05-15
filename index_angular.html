@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="gistApp">
+<head>
+  <meta charset="UTF-8" />
+  <title>Angular.jsを用いたGist検索サンプル</title>
+  <!-- Modelクラスをインポート -->
+  <script type="text/javascript" src="js/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-resource.min.js"></script>
+  <!-- Viewクラスをインポート -->
+  <script type="text/javascript" src="js/controller.js"></script>
+  
+</head>
+<body ng-controller="GistListCtrl">
+  <!-- Viewの定義 -->
+  <div id="gistapp">
+    <header>
+      <h1>Gist 検索</h1>
+    </header>
+    <section id="condition">
+      ユーザ:
+      <input ng-model="query" />
+    </section>
+    <section id="result" >
+      <ul id="gist-list">
+        <li ng-repeat="gist in gists track by $index| filter:query">
+        <a href="{{gist.html_url}}" target="_blank">{{gist.id}} : {{gist.description}}</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
