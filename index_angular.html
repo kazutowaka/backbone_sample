@@ -18,11 +18,11 @@
     </header>
     <section id="condition">
       ユーザ:
-      <input ng-model="query" />
+      <input ng-model="query" ng-change="onChange()" >
     </section>
     <section id="result" >
       <ul id="gist-list">
-        <li ng-repeat="gist in gists track by $index| filter:query">
+        <li ng-repeat="gist in gists track by $index">
         <a href="{{gist.html_url}}" target="_blank">{{gist.id}} : {{gist.description}}</a>
         </li>
       </ul>

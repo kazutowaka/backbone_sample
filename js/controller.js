@@ -20,24 +20,29 @@ gistApp.controller('GistListCtrl', ['$scope', '$http',
 */
 
 gistApp.controller('GistListCtrl', function($scope, $http) {
-  	$http({
+  	console.log($scope.query);
+	
+	//ng-modelの値が変化するたびに呼ばれる  
+  	$scope.onChange = function () {
+	    $http({
   		method:'get',
   		params:'callback=json',
-  		url:'https://api.github.com/users/ta/gists',
+  		url:'https://api.github.com/users/'+$scope.query+'/gists',
   		responseType:"json"
   		}
   		).success(function(response) {
 			//console.log(response.data);
-			console.log(response);
+			//console.log(response);
 
 		$scope.gists = response;
-		}).error(function(data, status) {
-      		alert('通信エラーが発生しました');
-    	});
+		});
+	};
+  	
   	
   
 });
 //取得後のjsonpの前にあるコメントが邪魔してうまく動かない
+//jsonpを使う場合callbackメソッドを呼ばないと行けない
 // gistApp.controller('GistListCtrl', function($scope, $http) {
 //   	$http.jsonp('https://api.github.com/users/ta/gists?callback=jsonp').success(function(response) {
 // 		//console.log(response.data);
