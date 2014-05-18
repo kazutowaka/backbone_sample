@@ -3,21 +3,7 @@
 /* Controllers */
 
 var gistApp = angular.module('gistApp', []);
-/*
-gistApp.controller('GistListCtrl', ['$scope', '$http',
-  function($scope, $http) {
-    if($scope.query() != undefined){
-    	$http.get('https://api.github.com/users/' +
-	      $scope.query() + '/gists?callback=?').success(
-	      function(data) {
-	      	$scope.gists = data;
-	      }
-	    );
-    }
-    
 
-  }]);
-*/
 
 gistApp.controller('GistListCtrl', function($scope, $http) {
   	console.log($scope.query);
@@ -60,3 +46,19 @@ gistApp.controller('GistListCtrl', function($scope, $http) {
 // 			console.log(contents);
 //           $scope.gists = contents.data; // getはobject、queryはarray
 //         }]);
+
+/*
+gistApp.controller('GistListCtrl', ['$scope', '$http',
+  function($scope, $http) {
+    if($scope.query() != undefined){
+    	$http.get('https://api.github.com/users/' +
+	      $scope.query() + '/gists?callback=?').success(
+	      function(data) {
+	      	$scope.gists = data;
+	      }
+	    );
+    }
+    
+
+  }]);
+*/
